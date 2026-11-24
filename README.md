@@ -1,8 +1,16 @@
 # SEC Finance Agent Eval
 
-Can a two-agent workflow answer SEC filing questions more accurately than a single agent under the same total model token budget?
+[![Offline tests](https://github.com/ohjeffkuston/sec-finance-agent-eval/actions/workflows/tests.yml/badge.svg)](https://github.com/ohjeffkuston/sec-finance-agent-eval/actions/workflows/tests.yml)
 
-This development pilot contains 20 tasks using four original Form 10-Ks from Tesla, 3D Systems, Apple, and Microsoft. Tasks cover fiscal periods, units, signs, ratios, statement reconciliations, footnotes, unsupported premises, and cross-company comparisons.
+A reproducible benchmark for testing whether one agent or two can answer SEC filing questions more accurately under the same total token budget. The pilot contains 20 tasks drawn from original Form 10-Ks for Tesla, 3D Systems, Apple, and Microsoft.
+
+**[Read all 20 worked solutions](SOLUTIONS.md)** · [Browse the task prompts](data/tasks.jsonl) · [Run the benchmark](#run-the-benchmark)
+
+## See a solution in action
+
+**Reconcile restricted cash at 3D Systems.** The balance sheet showed $133.665 million in cash and cash equivalents. The filing's cash flow footnote disclosed another $0.952 million in restricted cash. Adding the two reconciles to $134.617 million on the cash flow statement. The checker tests the amount, units, and whether the response cites a passage from the filing. [Worked solution and source](SOLUTIONS.md#3d-systems-fy2019)
+
+Other tasks test fiscal-year selection, financial ratios, multi-statement calculations, non-GAAP adjustments, and when the available data is insufficient to answer.
 
 ## Run the benchmark
 
@@ -65,7 +73,7 @@ This benchmark measures reasoning and citation against curated passages. Filing 
 
 ## Results
 
-Live comparison pending human answer-key review and model trials. Local tests exercise the parser, checker, budget allocation and paired reporting.
+The offline tests pass. Live model trials and human answer-key sign-off are pending. The worked solutions above are the expected answers for the pilot.
 
 | Configuration | Answer accuracy | Evidence accuracy | Joint accuracy | Median latency | Estimated cost per joint pass |
 | --- | --- | --- | --- | --- | --- |
@@ -74,6 +82,7 @@ Live comparison pending human answer-key review and model trials. Local tests ex
 
 ## Repository contents
 
+- [SOLUTIONS.md](SOLUTIONS.md) shows the expected answers, calculations, and filing sources for all 20 tasks.
 - `data/tasks.jsonl` contains prompts and SEC filing URLs.
 - `data/response_fields.json` contains response field names, unit labels, and filing passage selectors.
 - `data/answer_key.jsonl` contains the draft key and supporting evidence locations. The runner does not read this file when generating answers.
