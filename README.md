@@ -22,6 +22,24 @@ python3 benchmark.py score runs/baseline.jsonl --review-template runs/review.csv
 
 Use your own name or organization and contact email in the SEC User-Agent. Downloads are cached and spaced out. The run command reads the cached filings, gives each configuration the same curated excerpts from those filings, and writes paired attempt records. It refuses to overwrite an existing run file. A full three-repeat pilot makes up to 180 generation calls plus token count requests. The one-task smoke run makes up to three generation calls.
 
+## Run on GitHub Actions
+
+The **Live benchmark** workflow starts only when dispatched manually. In the repository's
+**Settings → Secrets and variables → Actions**, add these repository secrets:
+
+- `OPENAI_API_KEY` — an API key for your OpenAI project.
+- `SEC_USER_AGENT` — your name or organization followed by a contact email.
+
+Open **Actions → Live benchmark → Run workflow** and choose **smoke** first. It
+runs both configurations on FIN-01 with up to three model calls. After the
+smoke test succeeds, choose **pilot** for all 20 tasks and three trials per
+configuration. Both use the pinned GPT-5.4 mini snapshot and a 16,000-token
+cap per attempt. Review the project's API pricing before starting.
+
+Download the workflow's artifact for the raw attempts, provisional report,
+and human-review CSV. Keep in mind that the repository is public. Results
+artifacts include public filing excerpts and model outputs and expire after seven days.
+
 ## Review and score
 
 1. Review `data/answer_key.jsonl` against the SEC filings. Check expected values, units, signs, periods, tolerances, and the evidence required to support each answer. Correct anything needed and commit the reviewed key before scoring.

@@ -1,0 +1,78 @@
+name: Live benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      run_type:
+        description: Smoke test (one task) or full pilot (three trials per task)
+        type: choice
+        default: smoke
+        options:
+          - smoke
+          - pilot
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-benchmark
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check benchmark settings
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: |
+          if [[ -z "$OPENAI_API_KEY" || -z "$SEC_USER_AGENT" ]]; then
+            echo "::error::Set the OPENAI_API_KEY and SEC_USER_AGENT repository secrets."
+            exit 1
+          fi
+      - name: Cache source filings
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python -u benchmark.py fetch
+      - name: Run and score the comparison
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          RUN_TYPE: ${{ inputs.run_type }}
+          MODEL: gpt-5.4-mini-2026-03-17
+        run: |
+          if [[ "$RUN_TYPE" == "smoke" ]]; then
+            selection=(--task FIN-01 --trials 1)
+          else
+            selection=(--trials 3)
+          fi
+          python -u benchmark.py run --model "$MODEL" --budget 16000 "${selection[@]}" --output runs/attempts.jsonl
+          python benchmark.py score runs/attempts.jsonl --input-rate 0.75 --output-rate 4.50 \
+            --review-template runs/review.csv --output runs/report.json > /dev/null
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          rows = json.loads(Path("runs/report.json").read_text())["summary"]
+          if os.environ["RUN_TYPE"] == "smoke":
+              failed = any(row["failed_attempts"] for row in rows.values())
+          else:
+              failed = any(row["failed_attempts"] == row["attempts"] for row in rows.values())
+          if failed:
+              raise SystemExit("A configuration produced no usable responses. Check attempts.jsonl and the run logs.")
+          PY
+      - name: Upload provisional results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-benchmark-${{ inputs.run_type }}
+          path: runs/
+          if-no-files-found: ignore
+          retention-days: 7
