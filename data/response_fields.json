@@ -1,0 +1,323 @@
+{
+  "FIN-01": {
+    "fields": [
+      "revenue",
+      "cost_of_revenue"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Tesla": [
+        [
+          "consolidated statements of operations",
+          "loss from operations"
+        ]
+      ]
+    }
+  },
+  "FIN-02": {
+    "fields": [
+      "operating_income"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Tesla": [
+        [
+          "consolidated statements of operations",
+          "loss from operations"
+        ]
+      ]
+    }
+  },
+  "FIN-03": {
+    "fields": [
+      "gross_margin"
+    ],
+    "unit": "percent",
+    "sections": {
+      "Tesla": [
+        [
+          "consolidated statements of operations",
+          "loss from operations"
+        ]
+      ]
+    }
+  },
+  "FIN-04": {
+    "fields": [
+      "variable_costs",
+      "classification"
+    ],
+    "unit": "USD millions for variable_costs",
+    "sections": {
+      "Tesla": [
+        [
+          "consolidated statements of operations",
+          "loss from operations"
+        ]
+      ]
+    }
+  },
+  "FIN-05": {
+    "fields": [
+      "automotive",
+      "energy_generation_and_storage",
+      "services_and_other",
+      "total"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Tesla": [
+        [
+          "consolidated statements of operations",
+          "loss from operations"
+        ]
+      ]
+    }
+  },
+  "FIN-06": {
+    "fields": [
+      "status"
+    ],
+    "unit": "none",
+    "sections": {
+      "Tesla": [
+        [
+          "consolidated statements of operations",
+          "loss from operations"
+        ]
+      ]
+    }
+  },
+  "FIN-07": {
+    "fields": [
+      "beginning",
+      "ending"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "3D Systems": [
+        [
+          "consolidated statements of cash flows",
+          "a.the amounts for cash and cash equivalents shown above"
+        ]
+      ]
+    }
+  },
+  "FIN-08": {
+    "fields": [
+      "balance_sheet_cash",
+      "ending_cash_including_restricted",
+      "restricted_cash",
+      "balance_sheet_line"
+    ],
+    "unit": "USD thousands for monetary fields",
+    "sections": {
+      "3D Systems": [
+        [
+          "consolidated balance sheets",
+          "cash and cash equivalents"
+        ],
+        [
+          "consolidated statements of cash flows",
+          "a.the amounts for cash and cash equivalents shown above"
+        ]
+      ]
+    }
+  },
+  "FIN-09": {
+    "fields": [
+      "pre_fx_change",
+      "fx_effect",
+      "post_fx_change"
+    ],
+    "unit": "USD thousands",
+    "sections": {
+      "3D Systems": [
+        [
+          "consolidated statements of cash flows",
+          "a.the amounts for cash and cash equivalents shown above"
+        ]
+      ]
+    }
+  },
+  "FIN-10": {
+    "fields": [
+      "claim_correct",
+      "actual_beginning_balance",
+      "year_of_claimed_opening_balance"
+    ],
+    "unit": "USD thousands for actual_beginning_balance",
+    "sections": {
+      "3D Systems": [
+        [
+          "consolidated statements of cash flows",
+          "a.the amounts for cash and cash equivalents shown above"
+        ]
+      ]
+    }
+  },
+  "FIN-11": {
+    "fields": [
+      "change"
+    ],
+    "unit": "USD thousands",
+    "sections": {
+      "3D Systems": [
+        [
+          "consolidated statements of cash flows",
+          "a.the amounts for cash and cash equivalents shown above"
+        ]
+      ]
+    }
+  },
+  "FIN-12": {
+    "fields": [
+      "services_share"
+    ],
+    "unit": "percent",
+    "sections": {
+      "Apple": [
+        [
+          "consolidated statements of operations",
+          "net income"
+        ]
+      ]
+    }
+  },
+  "FIN-13": {
+    "fields": [
+      "current_ratio"
+    ],
+    "unit": "times",
+    "sections": {
+      "Apple": [
+        [
+          "consolidated balance sheets",
+          "total current liabilities"
+        ]
+      ]
+    }
+  },
+  "FIN-14": {
+    "fields": [
+      "provision",
+      "net_cash_paid",
+      "provision_less_cash_paid"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Apple": [
+        [
+          "consolidated statements of operations",
+          "net income"
+        ],
+        [
+          "consolidated statements of cash flows",
+          "cash paid for income taxes"
+        ]
+      ]
+    }
+  },
+  "FIN-15": {
+    "fields": [
+      "revenue_recognized"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Apple": [
+        [
+          "note 2 – revenue",
+          "total net sales include"
+        ]
+      ]
+    }
+  },
+  "FIN-16": {
+    "fields": [
+      "gaap_operating_income",
+      "adjusted_operating_income",
+      "adjustment"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Microsoft": [
+        [
+          "the following table reconciles our financial results reported in accordance with gaap to non-gaap financial results:",
+          "adjusted operating income (non-gaap)"
+        ]
+      ]
+    }
+  },
+  "FIN-17": {
+    "fields": [
+      "operating_margin_change"
+    ],
+    "unit": "percentage points",
+    "sections": {
+      "Microsoft": [
+        [
+          "income statements",
+          "operating income"
+        ]
+      ]
+    }
+  },
+  "FIN-18": {
+    "fields": [
+      "free_cash_flow"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Microsoft": [
+        [
+          "cash flows statements",
+          "additions to property and equipment"
+        ]
+      ]
+    }
+  },
+  "FIN-19": {
+    "fields": [
+      "apple",
+      "microsoft",
+      "apple_less_microsoft"
+    ],
+    "unit": "USD millions",
+    "sections": {
+      "Apple": [
+        [
+          "consolidated statements of cash flows",
+          "payments for acquisition of property, plant and equipment"
+        ]
+      ],
+      "Microsoft": [
+        [
+          "cash flows statements",
+          "additions to property and equipment"
+        ]
+      ]
+    }
+  },
+  "FIN-20": {
+    "fields": [
+      "claim_correct",
+      "apple_period_end",
+      "microsoft_period_end"
+    ],
+    "unit": "ISO date for period fields",
+    "sections": {
+      "Apple": [
+        [
+          "cover",
+          "for the fiscal year ended"
+        ]
+      ],
+      "Microsoft": [
+        [
+          "cover",
+          "for the fiscal year ended"
+        ]
+      ]
+    }
+  }
+}
