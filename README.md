@@ -90,3 +90,9 @@ The offline tests pass. Live model trials and human answer-key sign-off are pend
 - `tests/` runs offline and uses simulated model responses.
 
 [SEC EDGAR access guidance](https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data) · [OpenAI input token counting](https://developers.openai.com/api/docs/guides/token-counting)
+
+## License
+
+The original project code, tasks, reference solutions, and documentation are available under the [MIT License](LICENSE).
+
+The linked SEC filings are third-party source materials and are outside this license.
